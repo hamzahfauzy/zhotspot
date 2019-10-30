@@ -73,7 +73,7 @@ class RouterController extends Controller
             $chap_secret_line = $lastDevice->chap_secret_line+1;
         }
 
-        $pptp = substring(md5($device->id),0,7);
+        $pptp = substr(md5($device->id),0,7);
         $ip = '192.168.0.'.($lastSegment+1);
 
         $device->update([
