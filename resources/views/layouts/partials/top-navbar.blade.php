@@ -3,7 +3,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{asset('assets/z-techno.png')}}" width="50px" style="margin-top: -3px"> <span>&nbsp;&nbsp; TECHNO</span>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" onclick="toggleLeftSidebar()">
                     <i class="fa fa-bars fa-lg"></i>
                 </button>
 

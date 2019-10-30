@@ -11,6 +11,7 @@ html, body, #app {
 .left-sidebar-section {
 	width: 280px;
 	float: left;
+	z-index: 2;
 	display: inline-block;
 	background-color: #FFF;
 	overflow: hidden;
@@ -19,6 +20,10 @@ html, body, #app {
 	top: 0;
 	position: fixed;
 	transition: width 0.5s ease 0s;
+}
+
+.toggle-sidebar {
+	width: 280px !important;
 }
 
 .sidebar-container {
@@ -95,7 +100,7 @@ html, body, #app {
 
 .z-techno-navbar {
 	background-color: #130912 !important;
-	z-index: 1;
+	z-index: 3;
 	width: 100%;
 	position: fixed;
 }
