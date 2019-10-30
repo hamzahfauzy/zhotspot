@@ -7,7 +7,7 @@
         	<div class="content-wrapper">
 	            <h2>Users Router {{$router->name}}</h2>
 
-	            <a href="{{route('user.router.users.create',$router->id)}}" class="btn z-techno-btn z-techno-primary"><i class="fa fa-plus"></i> Add User</a>
+	            <a href="{{route('user.router.users',$router->id)}}" class="btn z-techno-btn z-techno-secondary"><i class="fa fa-arrow-left"></i> Back</a>
 	            <p></p>
 	            @if ($message = Session::get('success'))
 			      <div class="alert alert-success alert-block">
@@ -31,7 +31,7 @@
 	            		</tr>
 	            		@if(empty($responses) || count($responses) == 0)
 	            		<tr>
-	            			<td colspan="6"><i>Data not found!</i></td>
+	            			<td colspan="3"><i>Data not found!</i></td>
 	            		</tr>
 	            		@endif
 
@@ -40,7 +40,7 @@
 	            		<tr>
 	            			<td>{{++$key}}</td>
 	            			<td>
-	            				{{$response->getProperty('name')}}
+	            				{{$response->getProperty('user')}}
 	            			</td>
 	            			<td>
 	            				<a href="{{route('user.router.users.remove',[$router->id,$response->getProperty('name')])}}" class="btn z-techno-btn btn-success"><i class="fa fa-minus"></i> Kick</a>
