@@ -53,14 +53,14 @@
 						      	Copy this script below to your RouterOS terminal<br>
 						      	Step 1 <br>
 						        <code>
-						        	tool fetch url="{{URL::to('/')}}/installation/{{$device->token}}" dst-path={{str_replace(' ','',$device->name)}}.zins mode=http
-						        	<!-- /interface pptp-client add name={{str_replace(' ','',$device->name)}} user={{$device->pptp_user}} password={{$device->pptp_password}} connect-to=103.15.242.82 disabled=no -->
+						        	<!-- tool fetch url="{{URL::to('/')}}/installation/{{$device->token}}" dst-path={{str_replace(' ','',$device->name)}}.zins mode=http -->
+						        	/interface pptp-client add name={{str_replace(' ','',$device->name)}} user={{$device->pptp_user}} password={{$device->pptp_password}} connect-to=103.15.242.82 disabled=no
 						        </code>
 						        <br>
-						        Step 2<br>
+						        <!-- Step 2<br>
 						        <code>
 						        	import {{str_replace(' ','',$device->name)}}.zins
-						        </code>
+						        </code> -->
 						      </div>
 						      <div class="modal-footer">
 						        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
