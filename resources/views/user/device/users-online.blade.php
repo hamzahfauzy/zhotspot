@@ -43,7 +43,7 @@
 	            				{{$response->getProperty('user')}}
 	            			</td>
 	            			<td>
-	            				<a href="{{route('user.router.users.remove',[$router->id,$response->getProperty('name')])}}" class="btn z-techno-btn btn-success"><i class="fa fa-minus"></i> Kick</a>
+	            				<a href="{{route('user.router.users.remove',[$router->id,$response->getProperty('user')])}}" class="btn z-techno-btn btn-success"><i class="fa fa-minus"></i> Kick</a>
 	            			</td>
 	            		</tr>
 	            		@endif

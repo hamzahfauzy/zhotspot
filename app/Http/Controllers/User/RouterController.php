@@ -131,7 +131,7 @@ class RouterController extends Controller
         $setRequest->setArgument('numbers', $id);
         $client->sendSync($setRequest);
 
-        return redirect()->route('user.router.users.remove',$request->router_id)->with(['success' => 'a user kicked']);;
+        return redirect()->route('user.router.users.online',$request->router_id)->with(['success' => 'a user kicked']);;
     }
 
     public function profiles(Device $router)
