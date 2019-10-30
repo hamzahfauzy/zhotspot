@@ -514,7 +514,7 @@ class RouterController extends Controller
         $router = $this->device->find($request->id);
         $this->userRouterChecker($router);
 
-        exec('sudo /var/www/html/bash/test2.sh '$router->chap_secret_line'd 2>&1');
+        exec('sudo /var/www/html/bash/test2.sh '.$router->chap_secret_line.'d 2>&1');
         exec('sudo /etc/init.d/pptpd restart 2>&1');
 
         $router->delete();
