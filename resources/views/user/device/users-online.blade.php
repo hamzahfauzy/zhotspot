@@ -8,7 +8,6 @@
 	            <h2>Users Router {{$router->name}}</h2>
 
 	            <a href="{{route('user.router.users.create',$router->id)}}" class="btn z-techno-btn z-techno-primary"><i class="fa fa-plus"></i> Add User</a>
-	            <a href="{{route('user.router.users.online',$router->id)}}" class="btn z-techno-btn z-techno-secondary"><i class="fa fa-users"></i> Users Online</a>
 	            <p></p>
 	            @if ($message = Session::get('success'))
 			      <div class="alert alert-success alert-block">
@@ -27,10 +26,7 @@
 	            	<table class="table table-striped">
 	            		<tr>
 	            			<th>#</th>
-	            			<th>Username</th>
-	            			<th>Profile</th>
-	            			<th>Status</th>
-	            			<th>Date</th>
+	            			<th>Name</th>
 	            			<th></th>
 	            		</tr>
 	            		@if(empty($responses) || count($responses) == 0)
@@ -41,44 +37,13 @@
 
 	            		@foreach ($responses as $key => $response)
 	            		@if ($response->getType() === PEAR2\Net\RouterOS\Response::TYPE_DATA)
-	            		<?php 
-	            			$badge = ['offline' => 'badge-warning','online' => 'badge-success', 'new' => 'badge-primary', 'expired' => 'badge-danger'];
-	            			$comment = str_replace("'",'"',$response->getProperty('comment')); $comment = json_decode($comment); 
-	            		?>
 	            		<tr>
 	            			<td>{{++$key}}</td>
 	            			<td>
 	            				{{$response->getProperty('name')}}
 	            			</td>
 	            			<td>
-	            				{{$response->getProperty('profile')}}
-	            			</td>
-	            			<td>
-	            				@if($response->getProperty('disabled') == 'true')
-	            					<span class="badge badge-secondary">disabled</span>
-	            				@else
-		            				@if($comment)
-		            					<span class="badge {{$badge[$comment->status]}}">{{$comment->status}}</span>
-		            				@endif
-	            				@endif
-	            			</td>
-	            			<td>
-	            				{{$comment ? $comment->waktu." ".$comment->tanggal : ''}}
-	            			</td>
-	            			<td>
-	            				@if($response->getProperty('disabled') == 'true')
-	            				<a href="{{route('user.router.users.activate',[$router->id,$response->getProperty('name')])}}" class="btn z-techno-btn btn-success"><i class="fa fa-check"></i> Activate</a>
-	            				@else
-	            				<a href="{{route('user.router.users.deactivate',[$router->id,$response->getProperty('name')])}}" class="btn z-techno-btn z-techno-primary"><i class="fa fa-times"></i> Deactivate</a>
-	            				@endif
-	            				<a href="{{route('user.router.users.edit',[$router->id,$response->getProperty('name')])}}" class="btn z-techno-btn z-techno-secondary"><i class="fa fa-pencil"></i> Edit</a>
-	            				<a href="javascript:void(0)" onclick="deleteAlert('{{$response->getProperty('name')}}')" class="btn z-techno-btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
-	            				<form method="post" action="{{route('user.router.users.delete')}}" class="form-delete-{{$response->getProperty('name')}}">
-	            					{{csrf_field()}}
-	            					<input type="hidden" name="_method" value="DELETE">
-	            					<input type="hidden" name="router_id" value="{{$router->id}}">
-	            					<input type="hidden" name="name" value="{{$response->getProperty('name')}}">
-	            				</form>
+	            				<a href="{{route('user.router.users.remove',[$router->id,$response->getProperty('name')])}}" class="btn z-techno-btn btn-success"><i class="fa fa-minus"></i> Kick</a>
 	            			</td>
 	            		</tr>
 	            		@endif

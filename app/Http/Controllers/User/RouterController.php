@@ -95,6 +95,45 @@ class RouterController extends Controller
         ]);
     }
 
+    public function usersOnline(Device $router)
+    {
+        $this->userRouterChecker($router);
+        try {
+            $client = new RouterOS\Client($router->ip_address, $router->username, $router->password);
+        } catch (Exception $e) {
+            return 'Unable to connect RouterOS';
+        }
+
+        $responses = $client->sendSync(new RouterOS\Request('/ip/hotspot/active/print'));
+
+        return view('user.device.users-online',[
+            'responses' => $responses,
+            'router'    => $router
+        ]);
+    }
+
+    public function usersOnlineRemove(Device $router, $name)
+    {
+        $this->userRouterChecker($router);
+
+        try {
+            $client = new RouterOS\Client($router->ip_address, $router->username, $router->password);
+        } catch (Exception $e) {
+            return 'Unable to connect RouterOS';
+        }
+
+        $printRequest = new RouterOS\Request('/ip/hotspot/active/print');
+        $printRequest->setArgument('.proplist', '.id');
+        $printRequest->setQuery(RouterOS\Query::where('name', $request->name));
+        $id = $client->sendSync($printRequest)->getProperty('.id');
+
+        $setRequest = new RouterOS\Request('/ip/hotspot/active/remove');
+        $setRequest->setArgument('numbers', $id);
+        $client->sendSync($setRequest);
+
+        return redirect()->route('user.router.users.remove',$request->router_id)->with(['success' => 'a user kicked']);;
+    }
+
     public function profiles(Device $router)
     {
         $this->userRouterChecker($router);

@@ -68,6 +68,8 @@ Route::middleware('auth')->group(function(){
 
 			Route::get('/','RouterController@index')->name('user.router.index');
 			Route::get('users/{router}','RouterController@users')->name('user.router.users');
+			Route::get('users/{router}/online','RouterController@usersOnline')->name('user.router.users.online');
+			Route::get('users/{router}/remove/{name}','RouterController@usersOnlineRemove')->name('user.router.users.remove');
 			Route::get('profiles/{router}','RouterController@profiles')->name('user.router.profiles');
 
 			Route::middleware('UserExpired')->group(function(){
