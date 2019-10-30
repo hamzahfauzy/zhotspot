@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'HomeController@landing');
+Route::get('/runBash', 'HomeController@runBash');
 
 Auth::routes();
 

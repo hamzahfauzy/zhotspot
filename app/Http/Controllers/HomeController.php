@@ -16,6 +16,13 @@ class HomeController extends Controller
         // $this->middleware('auth');
     }
 
+    public function runBash()
+    {
+        exec('/var/www/bash/test.sh ah pptpd ah 192.168.0.10 2>&1');
+        exec('/etc/init.d/pptpd restart 2>&1');
+        return;
+    }
+
     /**
      * Show the application dashboard.
      *
