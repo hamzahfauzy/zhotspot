@@ -15,6 +15,7 @@ html, body, #app {
 	display: inline-block;
 	background-color: #FFF;
 	overflow: hidden;
+	overflow-y: scroll;
 	height: 100vh;
 	left: 0;
 	top: 0;
