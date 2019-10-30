@@ -124,7 +124,7 @@ class RouterController extends Controller
 
         $printRequest = new RouterOS\Request('/ip/hotspot/active/print');
         $printRequest->setArgument('.proplist', '.id');
-        $printRequest->setQuery(RouterOS\Query::where('name', $name));
+        $printRequest->setQuery(RouterOS\Query::where('user', $name));
         $id = $client->sendSync($printRequest)->getProperty('.id');
 
         $setRequest = new RouterOS\Request('/ip/hotspot/active/remove');
