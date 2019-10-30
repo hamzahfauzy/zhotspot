@@ -17,10 +17,10 @@ class CreatePaymentsTable extends Migration
             $table->increments('id');
             $table->integer('customer_id')->unsigned();
             $table->integer('product_id')->unsigned();
-            $table->double('amount');
-            $table->string('file_url');
+            $table->double('amount')->nullable();
+            $table->string('file_url')->nullable();
             $table->double('discount')->nullable();
-            $table->integer('status');
+            $table->integer('status')->nullable();
             $table->timestamps();
 
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');

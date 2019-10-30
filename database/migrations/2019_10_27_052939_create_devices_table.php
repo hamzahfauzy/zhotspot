@@ -22,6 +22,8 @@ class CreateDevicesTable extends Migration
             $table->string('pptp_user')->nullable();
             $table->string('pptp_password')->nullable();
             $table->string('ip_address')->nullable();
+            $table->integer('chap_secret_line')->nullable();
+            $table->string('token')->nullable();
             $table->timestamps();
 
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');

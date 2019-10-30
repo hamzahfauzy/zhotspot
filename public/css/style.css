@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+html, body, #app {
+	font-family: 'Montserrat', sans-serif;
+	width: 100%;
+	height: 100%;
+	font-size: 16px;
+	background-color: #eaeae0;
+}
+
+.left-sidebar-section {
+	width: 280px;
+	float: left;
+	display: inline-block;
+	background-color: #FFF;
+	overflow: hidden;
+	height: 100vh;
+	left: 0;
+	top: 0;
+	position: fixed;
+	transition: width 0.5s ease 0s;
+}
+
+.sidebar-container {
+	padding-top: 80px;
+	width: 300px;
+}
+
+.sidebar-container ul {
+	list-style-type: none;
+	padding:0px;
+}
+
+.sidebar-container li {
+	
+}
+
+.sidebar-container li a {
+	padding: 15px;
+	padding-left: 25px;
+	display: block;
+	text-decoration: none;
+	color: #f6922d;
+}
+
+.sidebar-container li a:hover {
+	background-color: #130912;
+	color: #FFF;
+}
+
+.z-techno-btn {
+	color: #FFF;
+	border:none;
+}
+
+.z-techno-primary {
+	background-color: #130912 !important;
+}
+
+.z-techno-primary:hover {
+	color:#f6922d;
+}
+
+.z-techno-secondary {
+	background-color: #f6922d !important;
+}
+
+.z-techno-secondary:hover {
+	color: #130912 !important;
+}
+
+.z-techno-el, .z-techno-btn {
+	border-radius: 0;
+}
+
+.z-techno-form .form-group label {
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.z-techno-content {
+	font-size: 13px !important;
+}
+
+.z-login-form .form-control, .z-techno-login-btn {
+	border-radius: 20px;
+	padding: 15px;
+	display: inline-block;
+	font-size: 18px;
+}
+
+.z-techno-login-btn {
+	padding: 5px;
+}
+
+.z-techno-navbar {
+	background-color: #130912 !important;
+	z-index: 1;
+	width: 100%;
+	position: fixed;
+}
+
+.z-techno-navbar button.navbar-toggler {
+	border:0px;
+}
+
+.z-techno-navbar i.fa.fa-bars {
+	color: #FFF;
+}
+
+.z-techno-navbar a.navbar-brand, .z-techno-navbar .navbar-nav a.nav-link {
+    color: #FFF !important;
+}
+
+main {
+	/*display: inline-block;*/
+	width: 100%;
+	
+}
+
+.content-container {
+	padding-top: 15px;
+	margin-left: 280px;
+	transition: margin-left 0.5s ease 0s;
+}
+
+.content-wrapper {
+	padding: 20px;
+	background: #FFF;
+}
+
+@media only screen and (max-width: 786px) {
+	.left-sidebar-section {
+		width: 0px;
+	}
+
+	.content-container {
+		margin-left: 0px;
+	}
+}
