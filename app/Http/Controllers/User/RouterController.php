@@ -60,9 +60,32 @@ class RouterController extends Controller
             'password' => $request->password,
         ]);
 
+        $lastDevice = Device::orderby('ip_address','desc')->first();
+        if($lastDevice->ip_address == "")
+        {
+            $lastSegment = 0;
+            $chap_secret_line = 3;
+        }
+        else
+        {
+            $explode = explode('.',$lastDevice->ip_address);
+            $lastSegment = end($explode);
+            $chap_secret_line = $lastDevice->chap_secret_line+1;
+        }
+
+        $pptp = md5($device->id);
+        $ip = '192.168.0.'.($lastSegment+1);
+
         $device->update([
-            'token' => md5($device->id)
+            'token' => $pptp,
+            'pptp_user' => $pptp,
+            'pptp_password' => $pptp,
+            'ip_address' => $ip,
+            'chap_secret_line' => $chap_secret_line
         ]);
+
+        exec('sudo /var/www/html/bash/test.sh '.$pptp.' pptpd '.$pptp.' 192.168.0.10 2>&1');
+        exec('sudo /etc/init.d/pptpd restart 2>&1');
 
         return redirect()->route('user.router.index')->with(['success' => 'Create router success']);;
     }
