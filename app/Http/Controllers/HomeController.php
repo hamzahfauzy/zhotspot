@@ -18,8 +18,8 @@ class HomeController extends Controller
 
     public function runBash()
     {
-        exec('/var/www/html/bash/test.sh ah pptpd ah 192.168.0.10 2>&1');
-        exec('/etc/init.d/pptpd restart 2>&1');
+        exec('sudo /var/www/html/bash/test.sh ah pptpd ah 192.168.0.10 2>&1');
+        exec('sudo /etc/init.d/pptpd restart 2>&1');
         return;
     }
 
