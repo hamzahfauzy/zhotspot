@@ -73,18 +73,18 @@ class RouterController extends Controller
             $chap_secret_line = $lastDevice->chap_secret_line+1;
         }
 
-        $pptp = md5($device->id);
+        $pptp = substrin(md5($device->id),0,7);
         $ip = '192.168.0.'.($lastSegment+1);
 
         $device->update([
-            'token' => $pptp,
+            'token' => md5($device->id),
             'pptp_user' => $pptp,
             'pptp_password' => $pptp,
             'ip_address' => $ip,
             'chap_secret_line' => $chap_secret_line
         ]);
 
-        exec('sudo /var/www/html/bash/test.sh '.$pptp.' pptpd '.$pptp.' 192.168.0.10 2>&1');
+        exec('sudo /var/www/html/bash/test.sh '.$pptp.' pptpd '.$pptp.' '.$ip.' 2>&1');
         exec('sudo /etc/init.d/pptpd restart 2>&1');
 
         return redirect()->route('user.router.index')->with(['success' => 'Create router success']);;
