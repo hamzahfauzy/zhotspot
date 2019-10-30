@@ -59,6 +59,8 @@
 	            				@else
 		            				@if($comment)
 		            					<span class="badge {{$badge[$comment->status]}}">{{$comment->status}}</span>
+		            				@else
+		            					<span class="badge badge-primary">active</span>
 		            				@endif
 	            				@endif
 	            			</td>
