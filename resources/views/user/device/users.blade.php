@@ -53,8 +53,12 @@
 	            				{{$response->getProperty('profile')}}
 	            			</td>
 	            			<td>
-	            				@if($comment)
-	            					<span class="badge {{$badge[$comment->status]}}">{{$comment->status}}</span>
+	            				@if($response->getProperty('disabled') == 'true')
+	            					<span class="badge badge-secondary">disabled</span>
+	            				@else
+		            				@if($comment)
+		            					<span class="badge {{$badge[$comment->status]}}">{{$comment->status}}</span>
+		            				@endif
 	            				@endif
 	            			</td>
 	            			<td>
