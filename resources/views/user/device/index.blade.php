@@ -59,7 +59,7 @@
 						        <br>
 						        Step 2<br>
 						        <code>
-						        	import {{str_replace(' ','',$device->name)}}.zins.zins
+						        	import {{str_replace(' ','',$device->name)}}.zins
 						        </code>
 						      </div>
 						      <div class="modal-footer">
