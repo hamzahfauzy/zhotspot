@@ -46,6 +46,24 @@
     function toggleLeftSidebar(){
         $('.left-sidebar-section').toggleClass('toggle-sidebar')
     }
+    $(".search-field").keyup(function(){
+        var searchVal = $(this).val().toLowerCase();
+        if(searchVal == "")
+        {
+            $('.search-row').show()
+        }
+        else
+        {
+            $('.search-row').hide()
+            $('.search-row').each(function( index ) {
+                var username = $(this).data("username").toString().toLowerCase();
+                if(username.indexOf(searchVal) != -1)
+                {
+                    $(this).show()
+                }
+            });
+        }
+    });
     </script>
 </body>
 </html>

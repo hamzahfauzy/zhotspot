@@ -23,6 +23,14 @@
 			          <strong>{!! $message !!}</strong>
 			      </div>
 			    @endif
+			    <div class="input-group">
+				    <input type="text" class="form-control z-techno-el search-field" placeholder="Search..">
+		            <div class="input-group-append">
+		                <button class="btn z-techno-btn btn-secondary" type="button">
+				            <i class="fa fa-search"></i>
+				        </button>
+				    </div>
+				</div>
 	            <div class="table-responsive">
 	            	<table class="table table-striped">
 	            		<tr>
@@ -45,7 +53,7 @@
 	            			$badge = ['offline' => 'badge-warning','online' => 'badge-success', 'new' => 'badge-primary', 'expired' => 'badge-danger'];
 	            			$comment = str_replace("'",'"',$response->getProperty('comment')); $comment = json_decode($comment); 
 	            		?>
-	            		<tr>
+	            		<tr class="search-row" data-username="{{$response->getProperty('name')}}">
 	            			<td>{{++$key}}</td>
 	            			<td>
 	            				{{$response->getProperty('name')}}
