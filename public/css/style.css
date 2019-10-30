@@ -15,7 +15,6 @@ html, body, #app {
 	display: inline-block;
 	background-color: #FFF;
 	overflow: hidden;
-	overflow-y: scroll;
 	height: 100vh;
 	left: 0;
 	top: 0;
@@ -142,5 +141,12 @@ main {
 
 	.content-container {
 		margin-left: 0px;
+	}
+}
+
+@media screen and ( max-height: 590px )
+{
+	.left-sidebar-section {
+		overflow-y: scroll;
 	}
 }
