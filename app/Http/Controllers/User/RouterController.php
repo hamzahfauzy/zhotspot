@@ -352,6 +352,52 @@ class RouterController extends Controller
         return redirect()->route('user.router.users',$request->router_id)->with(['success' => 'Update user success']);;
     }
 
+    public function activateUser(Device $router, $name)
+    {
+        $this->userRouterChecker($router);
+
+        try {
+            $client = new RouterOS\Client($router->ip_address, $router->username, $router->password);
+        } catch (Exception $e) {
+            return 'Unable to connect RouterOS';
+        }
+
+        $printRequest = new RouterOS\Request('/ip/hotspot/user/print');
+        $printRequest->setArgument('.proplist', '.id');
+        $printRequest->setQuery(RouterOS\Query::where('name', $name));
+        $id = $client->sendSync($printRequest)->getProperty('.id');
+
+        $setRequest = new RouterOS\Request('/ip/hotspot/user/set');
+        $setRequest->setArgument('numbers', $id);
+        $setRequest->setArgument('disabled', 'false');
+        $client->sendSync($setRequest);
+
+        return redirect()->route('user.router.users',$router->id)->with(['success' => 'Activate user success']);
+    }
+
+    public function deactivateUser(Device $router, $name)
+    {
+        $this->userRouterChecker($router);
+
+        try {
+            $client = new RouterOS\Client($router->ip_address, $router->username, $router->password);
+        } catch (Exception $e) {
+            return 'Unable to connect RouterOS';
+        }
+
+        $printRequest = new RouterOS\Request('/ip/hotspot/user/print');
+        $printRequest->setArgument('.proplist', '.id');
+        $printRequest->setQuery(RouterOS\Query::where('name', $name));
+        $id = $client->sendSync($printRequest)->getProperty('.id');
+
+        $setRequest = new RouterOS\Request('/ip/hotspot/user/set');
+        $setRequest->setArgument('numbers', $id);
+        $setRequest->setArgument('disabled', 'true');
+        $client->sendSync($setRequest);
+
+        return redirect()->route('user.router.users',$router->id)->with(['success' => 'Activate user success']);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

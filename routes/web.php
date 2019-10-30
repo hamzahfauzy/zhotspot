@@ -75,6 +75,8 @@ Route::middleware('auth')->group(function(){
 				Route::get('edit/{router}','RouterController@edit')->name('user.router.edit');
 				Route::get('users/{router}/create','RouterController@createUser')->name('user.router.users.create');
 				Route::get('users/{router}/edit/{name}','RouterController@editUser')->name('user.router.users.edit');
+				Route::get('users/{router}/activate/{name}','RouterController@activateUser')->name('user.router.users.activate');
+				Route::get('users/{router}/deactivate/{name}','RouterController@deactivateUser')->name('user.router.users.deactivate');
 				Route::post('users/insert','RouterController@insertUser')->name('user.router.users.insert');
 				Route::post('profiles/insert','RouterController@insertProfile')->name('user.router.profiles.insert');
 				Route::put('users/update','RouterController@updateUser')->name('user.router.users.update');

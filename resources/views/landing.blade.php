@@ -63,23 +63,28 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            .portal-link {
+                padding: 15px !important;
+                display: inline-block;
+                border:1px solid #333;
+            }
         </style>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
             <div class="content">
-                <div class="title m-b-md">
+                <div class="title m-b-md" style="font-size: 3em">
                     Z-Techno Hotspot Tool
                 </div>
 
                 <div class="links">
-                    <a href="#">Documentation</a>
+                    <a href="#" class="portal-link">Documentation</a>
                     @if (Route::has('login'))
                         @auth
-                            <a href="{{ url('/dashboard') }}">Home</a>
+                            <a href="{{ url('/dashboard') }}" class="portal-link">Home</a>
                         @else
-                            <a href="{{ route('login') }}">Login</a>
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('login') }}" class="portal-link">Login</a>
+                            <a href="{{ route('register') }}" class="portal-link">Register</a>
                         @endauth
                     @endif
                 </div>

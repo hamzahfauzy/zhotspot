@@ -42,7 +42,7 @@
 	            		@if ($response->getType() === PEAR2\Net\RouterOS\Response::TYPE_DATA)
 	            		<?php 
 	            			$badge = ['offline' => 'badge-warning','online' => 'badge-success', 'new' => 'badge-primary', 'expired' => 'badge-danger'];
-	            			$comment = str_replace("'",'"',$response->getProperty('comment')); $comment = json_decode($comment); // print_r($comment); 
+	            			$comment = str_replace("'",'"',$response->getProperty('comment')); $comment = json_decode($comment); 
 	            		?>
 	            		<tr>
 	            			<td>{{++$key}}</td>
@@ -61,6 +61,11 @@
 	            				{{$comment ? $comment->waktu." ".$comment->tanggal : ''}}
 	            			</td>
 	            			<td>
+	            				@if($response->getProperty('disabled') == 'true')
+	            				<a href="{{route('user.router.users.activate',[$router->id,$response->getProperty('name')])}}" class="btn z-techno-btn btn-success"><i class="fa fa-check"></i> Activate</a>
+	            				@else
+	            				<a href="{{route('user.router.users.deactivate',[$router->id,$response->getProperty('name')])}}" class="btn z-techno-btn z-techno-primary"><i class="fa fa-times"></i> Deactivate</a>
+	            				@endif
 	            				<a href="{{route('user.router.users.edit',[$router->id,$response->getProperty('name')])}}" class="btn z-techno-btn z-techno-secondary"><i class="fa fa-pencil"></i> Edit</a>
 	            				<a href="javascript:void(0)" onclick="deleteAlert('{{$response->getProperty('name')}}')" class="btn z-techno-btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
 	            				<form method="post" action="{{route('user.router.users.delete')}}" class="form-delete-{{$response->getProperty('name')}}">
