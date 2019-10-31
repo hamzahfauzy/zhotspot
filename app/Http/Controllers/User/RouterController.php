@@ -68,6 +68,8 @@ class RouterController extends Controller
         }
         else
         {
+            $explode = explode('.',$lastDevice->ip_address);
+            $lastSegment = end($explode);
             $r = exec("sudo /var/www/html/bash/test4.sh 2>&1");
             $r = explode(" ", $r);
             $chap_secret_line = $r[0]+1;
