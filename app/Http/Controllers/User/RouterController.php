@@ -68,9 +68,9 @@ class RouterController extends Controller
         }
         else
         {
-            $explode = explode('.',$lastDevice->ip_address);
-            $lastSegment = end($explode);
-            $chap_secret_line = $lastDevice->chap_secret_line+1;
+            $r = exec("sudo /var/www/html/bash/test4.sh 2>&1");
+            $r = explode(" ", $r);
+            $chap_secret_line = $r[0]+1;
         }
 
         $pptp = substr(md5($device->id),0,7);
