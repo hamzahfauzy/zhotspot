@@ -206,7 +206,7 @@ class RouterController extends Controller
                         :local time [/system clock get time];
                         :local setonline [/ip hotspot user set [find name=$user] comment="{\'status\':\'online\',\'waktu\':\'$time\',\'tanggal\':\'$date\'}"];
                         :if ([/system schedule find name=$user]="") do={ 
-                                /system schedule add name=$user interval='.$request->masa_aktif.$request->satuan.' on-event="/ip hotspot user disable [find name=$user]\r\n/ip hotspot user set [find user=$user] comment=\"{\'status\':\'expired\',\'waktu\':\'\',\'tanggal\':\'\'}\"\r\n/ip hotspot active remove [find user=$user]\r\n/ip hotspot cookie remove [find user=$user]\r\n/system schedule remove [find name=$user]" 
+                                /system schedule add name=$user interval='.$request->masa_aktif.$request->satuan.' on-event="/ip hotspot user disable [find name=$user]\r\n/ip hotspot user set [find name=$user] comment=\"{\'status\':\'expired\',\'waktu\':\'\',\'tanggal\':\'\'}\"\r\n/ip hotspot active remove [find user=$user]\r\n/ip hotspot cookie remove [find user=$user]\r\n/system schedule remove [find name=$user]" 
                             } 
                     }';
 
