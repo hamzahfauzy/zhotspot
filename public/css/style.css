@@ -4,7 +4,7 @@ html, body, #app {
 	font-family: 'Montserrat', sans-serif;
 	width: 100%;
 	height: 100%;
-	font-size: 16px;
+	font-size: 14px;
 	background-color: #eaeae0;
 }
 
@@ -13,7 +13,7 @@ html, body, #app {
 	float: left;
 	z-index: 2;
 	display: inline-block;
-	background-color: #FFF;
+	/*background-color: #FFF;*/
 	overflow: hidden;
 	height: 100vh;
 	left: 0;
@@ -22,13 +22,20 @@ html, body, #app {
 	transition: width 0.5s ease 0s;
 }
 
+li.menu-divider {
+	padding: 15px;
+	padding-top: 10px;
+	padding-bottom: 0px;
+	font-weight: bold;
+}
+
 .toggle-sidebar {
 	width: 280px !important;
 }
 
 .sidebar-container {
 	padding-top: 80px;
-	width: 300px;
+	width: 280px;
 }
 
 .sidebar-container ul {
@@ -41,16 +48,41 @@ html, body, #app {
 }
 
 .sidebar-container li a {
-	padding: 15px;
-	padding-left: 25px;
+	padding: 10px;
+	padding-left: 15px;
+	margin-left: 10px;
 	display: block;
 	text-decoration: none;
 	color: #f6922d;
+	font-size: 14px;
+	letter-spacing: 1px;
 }
 
+/*.sidebar-container li a i.fa {
+	color: #333;
+}*/
+
 .sidebar-container li a:hover {
-	background-color: #130912;
-	color: #FFF;
+	font-weight: bold;
+	color: #130912 !important;
+}
+.sidebar-active {
+	font-weight: bold;
+	background-color: #999;
+	border-radius: 5px;
+	color: #FFF !important;
+}
+
+img.left-profile-picture {
+	width: 150px;
+	height: 150px;
+	object-fit: cover;
+	/*border-radius: 50%;
+	overflow: hidden;*/
+}
+
+small.left-school-name {
+	color: blue;
 }
 
 .z-techno-btn {
@@ -137,6 +169,7 @@ main {
 @media only screen and (max-width: 786px) {
 	.left-sidebar-section {
 		width: 0px;
+		background-color: #eaeae0;
 	}
 
 	.content-container {
