@@ -57,6 +57,7 @@ Route::middleware('auth')->group(function(){
 
 			Route::get('/','RouterController@index')->name('admin.router.index');
 			Route::get('edit/{device}','RouterController@edit')->name('admin.router.edit');
+			Route::get('users/{router}','RouterController@users')->name('admin.router.users');
 			Route::put('update','RouterController@update')->name('admin.router.update');
 
 		});

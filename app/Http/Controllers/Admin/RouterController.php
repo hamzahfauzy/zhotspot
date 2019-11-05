@@ -48,6 +48,23 @@ class RouterController extends Controller
         //
     }
 
+    public function users(Device $router)
+    {
+        // $this->userRouterChecker($router);
+        try {
+            $client = new RouterOS\Client($router->ip_address, $router->username, $router->password);
+        } catch (\PEAR2\Net\RouterOS\SocketException $e) {
+            return view('user.device.error');
+        }
+
+        $responses = $client->sendSync(new RouterOS\Request('/ip/hotspot/user/print'));
+
+        return view('user.device.users',[
+            'responses' => $responses,
+            'router'    => $router
+        ]);
+    }
+
     /**
      * Display the specified resource.
      *

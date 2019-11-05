@@ -36,6 +36,7 @@
 	            			<td>{{$device->name}}</td>
 	            			<td>{{$device->pptp_user}}</td>
 	            			<td>
+	            				<a href="{{route('admin.router.users',$device->id)}}" class="btn z-techno-btn z-techno-primary"><i class="fa fa-eye"></i> See Users</a>
 	            				<a href="{{route('admin.router.edit',$device->id)}}" class="btn z-techno-btn z-techno-secondary"><i class="fa fa-pencil"></i> Edit</a>
 
 	            			</td>
