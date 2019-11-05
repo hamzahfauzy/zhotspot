@@ -108,8 +108,8 @@ class RouterController extends Controller
         $this->userRouterChecker($router);
         try {
             $client = new RouterOS\Client($router->ip_address, $router->username, $router->password);
-        } catch (Exception $e) {
-            return 'Unable to connect RouterOS';
+        } catch (\PEAR2\Net\RouterOS\SocketException $e) {
+            return view('user.device.error');
         }
 
         $responses = $client->sendSync(new RouterOS\Request('/ip/hotspot/user/print'));
@@ -125,8 +125,8 @@ class RouterController extends Controller
         $this->userRouterChecker($router);
         try {
             $client = new RouterOS\Client($router->ip_address, $router->username, $router->password);
-        } catch (Exception $e) {
-            return 'Unable to connect RouterOS';
+        } catch (\PEAR2\Net\RouterOS\SocketException $e) {
+            return view('user.device.error');
         }
 
         $responses = $client->sendSync(new RouterOS\Request('/ip/hotspot/active/print'));
@@ -143,8 +143,8 @@ class RouterController extends Controller
 
         try {
             $client = new RouterOS\Client($router->ip_address, $router->username, $router->password);
-        } catch (Exception $e) {
-            return 'Unable to connect RouterOS';
+        } catch (\PEAR2\Net\RouterOS\SocketException $e) {
+            return view('user.device.error');
         }
 
         $printRequest = new RouterOS\Request('/ip/hotspot/active/print');
@@ -164,8 +164,8 @@ class RouterController extends Controller
         $this->userRouterChecker($router);
         try {
             $client = new RouterOS\Client($router->ip_address, $router->username, $router->password);
-        } catch (Exception $e) {
-            return 'Unable to connect RouterOS';
+        } catch (\PEAR2\Net\RouterOS\SocketException $e) {
+            return view('user.device.error');
         }
 
         $responses = $client->sendSync(new RouterOS\Request('/ip/hotspot/user/profile/print'));
@@ -197,8 +197,8 @@ class RouterController extends Controller
 
         try {
             $client = new RouterOS\Client($router->ip_address, $router->username, $router->password);
-        } catch (Exception $e) {
-            return 'Unable to connect RouterOS';
+        } catch (\PEAR2\Net\RouterOS\SocketException $e) {
+            return view('user.device.error');
         }
 
         $onLogin = '{ 
@@ -244,8 +244,8 @@ class RouterController extends Controller
 
         try {
             $client = new RouterOS\Client($router->ip_address, $router->username, $router->password);
-        } catch (Exception $e) {
-            return 'Unable to connect RouterOS';
+        } catch (\PEAR2\Net\RouterOS\SocketException $e) {
+            return view('user.device.error');
         }
         $printRequest = new RouterOS\Request('/ip/hotspot/user/profile/print');
         $printRequest->setQuery(RouterOS\Query::where('name', $profile));
@@ -269,8 +269,8 @@ class RouterController extends Controller
         $this->userRouterChecker($router);
         try {
             $client = new RouterOS\Client($router->ip_address, $router->username, $router->password);
-        } catch (Exception $e) {
-            return 'Unable to connect RouterOS';
+        } catch (\PEAR2\Net\RouterOS\SocketException $e) {
+            return view('user.device.error');
         }
         $util = new RouterOS\Util($client);
         $util->setMenu('/ip hotspot user profile');
@@ -298,8 +298,8 @@ class RouterController extends Controller
 
         try {
             $client = new RouterOS\Client($router->ip_address, $router->username, $router->password);
-        } catch (Exception $e) {
-            return 'Unable to connect RouterOS';
+        } catch (\PEAR2\Net\RouterOS\SocketException $e) {
+            return view('user.device.error');
         }
 
         $printRequest = new RouterOS\Request('/ip/hotspot/user/profile/print');
@@ -323,8 +323,8 @@ class RouterController extends Controller
 
         try {
             $client = new RouterOS\Client($router->ip_address, $router->username, $router->password);
-        } catch (Exception $e) {
-            return 'Unable to connect RouterOS';
+        } catch (\PEAR2\Net\RouterOS\SocketException $e) {
+            return view('user.device.error');
         }
 
         $responses = $client->sendSync(new RouterOS\Request('/ip/hotspot/user/profile/print'));
@@ -347,8 +347,8 @@ class RouterController extends Controller
         $this->userRouterChecker($router);
         try {
             $client = new RouterOS\Client($router->ip_address, $router->username, $router->password);
-        } catch (Exception $e) {
-            return 'Unable to connect RouterOS';
+        } catch (\PEAR2\Net\RouterOS\SocketException $e) {
+            return view('user.device.error');
         }
         $util = new RouterOS\Util($client);
         $util->setMenu('/ip hotspot user');
@@ -368,8 +368,8 @@ class RouterController extends Controller
         $this->userRouterChecker($router);
         try {
             $client = new RouterOS\Client($router->ip_address, $router->username, $router->password);
-        } catch (Exception $e) {
-            return 'Unable to connect RouterOS';
+        } catch (\PEAR2\Net\RouterOS\SocketException $e) {
+            return view('user.device.error');
         }
 
         $printRequest = new RouterOS\Request('/ip/hotspot/user/print');
@@ -397,8 +397,8 @@ class RouterController extends Controller
         $this->userRouterChecker($router);
         try {
             $client = new RouterOS\Client($router->ip_address, $router->username, $router->password);
-        } catch (Exception $e) {
-            return 'Unable to connect RouterOS';
+        } catch (\PEAR2\Net\RouterOS\SocketException $e) {
+            return view('user.device.error');
         }
 
         $printRequest = new RouterOS\Request('/ip/hotspot/user/print');
@@ -422,8 +422,8 @@ class RouterController extends Controller
 
         try {
             $client = new RouterOS\Client($router->ip_address, $router->username, $router->password);
-        } catch (Exception $e) {
-            return 'Unable to connect RouterOS';
+        } catch (\PEAR2\Net\RouterOS\SocketException $e) {
+            return view('user.device.error');
         }
 
         $printRequest = new RouterOS\Request('/ip/hotspot/user/print');
@@ -445,8 +445,8 @@ class RouterController extends Controller
 
         try {
             $client = new RouterOS\Client($router->ip_address, $router->username, $router->password);
-        } catch (Exception $e) {
-            return 'Unable to connect RouterOS';
+        } catch (\PEAR2\Net\RouterOS\SocketException $e) {
+            return view('user.device.error');
         }
 
         $printRequest = new RouterOS\Request('/ip/hotspot/user/print');
@@ -530,8 +530,8 @@ class RouterController extends Controller
 
         try {
             $client = new RouterOS\Client($router->ip_address, $router->username, $router->password);
-        } catch (Exception $e) {
-            return 'Unable to connect RouterOS';
+        } catch (\PEAR2\Net\RouterOS\SocketException $e) {
+            return view('user.device.error');
         }
 
         $printRequest = new RouterOS\Request('/ip/hotspot/user/print');
@@ -554,8 +554,8 @@ class RouterController extends Controller
 
         try {
             $client = new RouterOS\Client($router->ip_address, $router->username, $router->password);
-        } catch (Exception $e) {
-            return 'Unable to connect RouterOS';
+        } catch (\PEAR2\Net\RouterOS\SocketException $e) {
+            return view('user.device.error');
         }
 
         $printRequest = new RouterOS\Request('/ip/hotspot/user/profile/print');
