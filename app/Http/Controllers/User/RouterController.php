@@ -434,7 +434,7 @@ class RouterController extends Controller
         $setRequest = new RouterOS\Request('/ip/hotspot/user/set');
         $setRequest->setArgument('numbers', $id);
         $setRequest->setArgument('disabled', 'false');
-        $setRequest->setArgument('comment', "{'status':'active','waktu':'$time','tanggal':'$date'}");
+        $setRequest->setArgument('comment', "{'status':'active','waktu':'','tanggal':''}");
         $client->sendSync($setRequest);
 
         return redirect()->route('user.router.users',$router->id)->with(['success' => 'Activate user success']);
