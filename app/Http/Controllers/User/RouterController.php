@@ -450,6 +450,7 @@ class RouterController extends Controller
             return view('user.device.error');
         }
 
+        // deactivate user
         $printRequest = new RouterOS\Request('/ip/hotspot/user/print');
         $printRequest->setArgument('.proplist', '.id');
         $printRequest->setQuery(RouterOS\Query::where('name', $name));
@@ -459,6 +460,17 @@ class RouterController extends Controller
         $setRequest->setArgument('numbers', $id);
         $setRequest->setArgument('disabled', 'true');
         $client->sendSync($setRequest);
+
+
+        // remove schedule
+        $printRequest = new RouterOS\Request('/system/scheduler/print');
+        $printRequest->setArgument('.proplist', '.id');
+        $printRequest->setQuery(RouterOS\Query::where('name', $name));
+        $id = $client->sendSync($printRequest)->getProperty('.id');
+
+        $removeRequest = new RouterOS\Request('/system/scheduler/remove');
+        $removeRequest->setArgument('numbers', $id);
+        $client->sendSync($removeRequest);
 
         return redirect()->route('user.router.users',$router->id)->with(['success' => 'Activate user success']);
     }
