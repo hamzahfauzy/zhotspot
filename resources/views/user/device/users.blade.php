@@ -50,7 +50,7 @@
 	            		@foreach ($responses as $key => $response)
 	            		@if ($response->getType() === PEAR2\Net\RouterOS\Response::TYPE_DATA)
 	            		<?php 
-	            			$badge = ['offline' => 'badge-warning','online' => 'badge-success', 'new' => 'badge-primary', 'expired' => 'badge-danger'];
+	            			$badge = ['offline' => 'badge-warning','online' => 'badge-success', 'new' => 'badge-primary', 'active' => 'badge-info', 'expired' => 'badge-danger'];
 	            			$comment = str_replace("'",'"',$response->getProperty('comment')); $comment = json_decode($comment); 
 	            		?>
 	            		<tr class="search-row" data-username="{{$response->getProperty('name')}}">
