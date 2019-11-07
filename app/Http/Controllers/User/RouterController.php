@@ -472,7 +472,7 @@ class RouterController extends Controller
         $removeRequest->setArgument('numbers', $id);
         $client->sendSync($removeRequest);
 
-        return redirect()->route('user.router.users',$router->id)->with(['success' => 'Activate user success']);
+        return redirect()->route('user.router.users',$router->id)->with(['success' => 'Deactivate user success']);
     }
 
     /**
