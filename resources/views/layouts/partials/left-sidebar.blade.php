@@ -1,8 +1,11 @@
 <div class="left-sidebar-section">
 	<div class="sidebar-container">
 		<ul>
+			<li class="menu-divider">
+				Administrator Menu
+			</li>
 		    <li>
-		        <a href="{{url('/dashboard')}}"><i class="fa fa-home fa-fw"></i> Dashboard</a>
+		        <a href="{{url('/dashboard')}}" class="@yield('home-active')"><i class="fa fa-home fa-fw"></i> Dashboard</a>
 		    </li>
 		    @if(auth()->user()->level == 'admin')
 		    <li>
@@ -52,15 +55,6 @@
 		        <a href="#"><i class="fa fa-cogs fa-fw"></i> Setting</a>
 		    </li>
 		    @endif
-		    <li>
-		    	<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-		    		<i class="fa fa-sign-out fa-fw"></i>  {{ __('Logout') }}
-		    	</a>
-
-		    	<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-		    		{{csrf_field()}}
-		    	</form>
-		    </li>
 		</ul>
 	</div>
 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Device;
 
 class DashboardController extends Controller
 {
@@ -23,7 +24,14 @@ class DashboardController extends Controller
             if(empty(auth()->user()->customer))
                 return redirect('/User/last-step');
 
-        return view('dashboard');
+        $routers = 0;
+        if(auth()->user()->level == 'user')
+            $routers = auth()->user()->customer->devices()->count();
+        else
+            $routers = Device::count();
+        return view('dashboard',[
+            'routers' => $routers
+        ]);
     }
 
     /**

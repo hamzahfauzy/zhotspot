@@ -35,9 +35,13 @@
                                     <a class="dropdown-item" href="#">
                                         {{ __('Profile') }}
                                     </a>
-                                    <a class="dropdown-item" href="#">
-                                        {{ __('Setting') }}
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        {{ __('Log Out') }}
                                     </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{csrf_field()}}
+                                    </form>
                                 </div>
                             </li>
                         @endguest
