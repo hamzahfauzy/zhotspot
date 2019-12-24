@@ -17,7 +17,7 @@ class MainController extends Controller
         	$device = Device::where('token',$token)->first();
         	if(!empty($device))
         	{
-        		return "/interface pptp-client add name=".str_replace(' ','',$device->name)." user=".$device->pptp_user." password=".$device->pptp_password." connect-to=103.15.242.82 disabled=no";
+        		return "/interface pptp-client add name=".str_replace(' ','',$device->name)." user=".$device->pptp_user." password=".$device->pptp_password." connect-to=\"z-hotspot.com\" disabled=no";
         	}
         }
     }
